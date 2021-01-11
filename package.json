@@ -4,6 +4,8 @@
   "description": "The backend for my Chaqar Bible App",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

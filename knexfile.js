@@ -1,43 +1,60 @@
 // Update with your config settings.
 
+var dotenv = require('dotenv')
+dotenv.config({ path: './.env'})
+
 module.exports = {
 
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './dev.sqlite3'
+      filename: './database/chaqardata.db3'
+    },
+    useNullAsDefault: true,
+    pool: {
+      afterCreate: (conn, done) => {
+        // runs after a connection is made to the sqlite engine
+        conn.run('PRAGMA foreign_keys = ON', done); // turn on FK enforcement
+      },
+    },
+    migrations: {
+      directory: './database/migrations' 
+    },
+    seeds: {
+      directory: './database/seeds'
     }
   },
 
-  staging: {
-    client: 'postgresql',
+  testing: {
+    client: 'sqlite3',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      filename: './database/testchaqardata.db3'
     },
+    useNullAsDefault: true,
     pool: {
-      min: 2,
-      max: 10
+      afterCreate: (conn, done) => {
+        // runs after a connection is made to the sqlite engine
+        conn.run('PRAGMA foreign_keys = ON', done); // turn on FK enforcement
+      },
     },
     migrations: {
-      tableName: 'knex_migrations'
+      directory: './database/migrations' 
+    },
+    seeds: {
+      directory: './database/seeds'
     }
   },
+
 
   production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
+    client: 'pg',
+    useNullAsDefault: true,
+    connection: process.env.DATABASE_URL,
     migrations: {
-      tableName: 'knex_migrations'
+      directory: './database/migrations' 
+    },
+    seeds: {
+      directory: './database/seeds'
     }
   }
 
