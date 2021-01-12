@@ -6,17 +6,9 @@ dotenv.config({ path: './.env'})
 module.exports = {
 
   development: {
-    client: 'sqlite3',
-    connection: {
-      filename: './database/chaqardata.db3'
-    },
+    client: 'pg',
     useNullAsDefault: true,
-    pool: {
-      afterCreate: (conn, done) => {
-        // runs after a connection is made to the sqlite engine
-        conn.run('PRAGMA foreign_keys = ON', done); // turn on FK enforcement
-      },
-    },
+    connection: process.env.DATABASE_URL,
     migrations: {
       directory: './database/migrations' 
     },
