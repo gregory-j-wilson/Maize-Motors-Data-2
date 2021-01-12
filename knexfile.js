@@ -18,7 +18,7 @@ module.exports = {
     seeds: {
       directory: './database/seeds'
     },
-    ssl: true
+    ssl: {rejectUnauthorized: false}
   },
 
   testing: {
@@ -51,7 +51,7 @@ module.exports = {
       user: "svyllxwlkngwhk",
       password: "48064fcca22c1a5ccb26ce6430351e5618a12f1edb49663eedde5807ce83be1e",
       database: "d245s3eoecht9v",
-      ssl: true,
+      ssl: {rejectUnauthorized: false},
      },
     migrations: {
       directory: './database/migrations' 
@@ -59,7 +59,7 @@ module.exports = {
     seeds: {
       directory: './database/seeds'
     },
-    ssl: true
+    ssl: {rejectUnauthorized: false}
   }
 
 };
