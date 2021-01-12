@@ -22,16 +22,16 @@ const restricted = require("./authenticate-middleware")
 
 router.post('/register', (req, res) => {
   
-    const credentials = req.body
+    const info = req.body
   
-    if (isValid(credentials)) {
+    if (isValid(req.body)) {
   
       const rounds = process.env.BCRYPT_ROUNDS || 8
-      const hash = bcryptjs.hashSync(credentials.password, rounds)
+      const hash = bcryptjs.hashSync(info.password, rounds)
   
-      credentials.password = hash
+      info.password = hash
   
-      Users.add(credentials)
+      Users.add(info)
           .then(user => {
             res.status(201).json({data: user})
           })
@@ -46,7 +46,7 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
   
-    const { email, password } = req.body
+    const { first_name, last_name, email, password } = req.body
   
     if (isValid(req.body)) {
         Users.findBy({email: email})
@@ -69,6 +69,15 @@ router.post('/login', (req, res) => {
         res.status(400).json({message: "Please provide your email and password."})
     }
 });
+
+router.get('/', restricted, (req, res) => {
+
+  Users.find()
+      .then(users => {
+          res.status(200).json(users)
+      })
+
+})
 
 
 //-----------------------------------------
