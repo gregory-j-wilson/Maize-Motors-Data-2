@@ -55,7 +55,8 @@ router.post('/login', (req, res) => {
                 if (user && bcryptjs.compareSync(password, user.password)) {
   
                     const token = makeJwt(user)
-                    res.status(200).json({ token, user })
+                    const user_id = user.id;
+                    res.status(200).json({ token, user_id })
   
                 } else {
                     res.status(401).json({message: "Invalid credentials"})
@@ -79,6 +80,17 @@ router.get('/', restricted, (req, res) => {
 
 })
 
+
+router.get('/:id', restricted, (req, res) => {
+
+  const { id } = req.params
+  
+  Users.findById(id)
+      .then(user => {
+          res.status(200).json(user)
+      })
+
+})
 
 //-----------------------------------------
 
