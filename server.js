@@ -4,6 +4,7 @@ const helmet = require('helmet')
 
 const authenticate = require('./auth/authenticate-middleware.js')
 const authRouter = require('./auth/auth-router.js')
+const commRouter = require('./database/commentary/commentary-router')
 
 const server = express()
 
@@ -25,6 +26,7 @@ server.use(function(req, res, next) {
 
 
 server.use('/api/auth', authRouter)
+server.use('/commentary', commRouter)
 
 //custom middleware (write it from scatch)
 server.get("/", (req, res) => {
