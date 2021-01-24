@@ -4,6 +4,7 @@ module.exports = {
     find,
     findBy,
     findById,
+    findByUserId,
     add,
     update,
     remove
@@ -20,6 +21,12 @@ function findBy(filter) {
 function findById(id) {
     return db('commentary').where({id}).first()
 }
+
+function findByUserId(user_id) {
+    return db('commentary').where({user_id})
+}
+
+
 
 async function add(chapterCommentary) {
     try {
