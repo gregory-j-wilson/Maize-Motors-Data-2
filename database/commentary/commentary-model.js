@@ -5,6 +5,7 @@ module.exports = {
     findBy,
     findById,
     findByUserId,
+    findByBookChapter,
     add,
     update,
     remove
@@ -24,6 +25,10 @@ function findById(id) {
 
 function findByUserId(user_id) {
     return db('commentary').where({user_id})
+}
+
+function findByBookChapter(book, chapter) {
+    return db('commentary').where({book}).where({chapter})
 }
 
 

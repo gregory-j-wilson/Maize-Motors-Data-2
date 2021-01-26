@@ -55,5 +55,17 @@ router.get('/:id', restricted, (req, res) => {
 })
 
 
+router.get('/:book/:chapter', restricted, (req, res) => {
+
+  const { book, chapter } = req.params
+
+  Commentary.findByBookChapter(book, chapter)
+      .then(chapterCommentary => {
+        res.status(200).json(chapterCommentary)
+      })
+
+})
+
+
   
 module.exports = router;
