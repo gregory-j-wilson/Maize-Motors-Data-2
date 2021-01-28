@@ -34,7 +34,10 @@ router.post('/register', (req, res) => {
   
       Users.add(info)
           .then(user => {
-            res.status(201).json({data: user})
+
+            const token = makeJwt(user)
+            const user_id = user.id
+            res.status(201).json({ token, user_id })
           })
           .catch(error => {
             res.status(500).json({error: error.message})
