@@ -66,6 +66,24 @@ router.get('/:book/:chapter', restricted, (req, res) => {
 
 })
 
+router.delete('/:id', restricted, (req, res) => {
+
+  const {id} = req.params
+
+  Commentary.remove(id)
+  .then(deleted => {
+      if (deleted) {
+        res.status(200).json({ message: 'Commentary deleted!' });
+      } else {
+        res.status(404).json({ message: 'Could not find commentary with given id' });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: `Failed to delete commentary because ${err.message}.` });
+    });
+
+})
+
 
   
 module.exports = router;
