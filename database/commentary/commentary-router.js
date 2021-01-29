@@ -66,6 +66,21 @@ router.get('/:book/:chapter', restricted, (req, res) => {
 
 })
 
+router.put('/:id', restricted, (req, res) => {
+
+  const { id } = req.params;
+  const changes = req.body;
+
+  Commentary.update(changes, id)
+        .then(number => {
+          res.json({message: `${number} user(s) updated.`})
+        })
+        .catch(err => {
+          res.status(500).json({ message: 'Failed to update user' })
+        })
+
+})
+
 router.delete('/:id', restricted, (req, res) => {
 
   const {id} = req.params
