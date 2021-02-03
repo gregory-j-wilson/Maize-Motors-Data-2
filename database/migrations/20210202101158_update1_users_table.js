@@ -5,7 +5,7 @@ exports.up = function(knex) {
         t.string('city')
         t.string('state')
         t.string('country')
-        t.text('bio', longtext)
+        t.text('bio', 'longtext')
         t.text('profile_pic_url')
     })
   
