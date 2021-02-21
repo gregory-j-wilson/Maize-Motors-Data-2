@@ -5,7 +5,7 @@ module.exports = {
     findBy,
     findById,
     findByUserId,
-    findByBookChapter,
+    findByPostId,
     add,
     update,
     remove
@@ -27,13 +27,15 @@ function findByUserId(user_id) {
     return db('comments_on_posts').where({user_id})
 }
 
-
+function findByPostId(post_id) {
+    return db('commentary').where({post_id})
+}
 
 
 
 async function add(comment_on_post) {
     try {
-        const [id] = await db('commentary').insert(comment_on_post, 'id')
+        const [id] = await db('comments_on_posts').insert(comment_on_post, 'id')
         return findById(id)
     } catch (error) {
         throw error

@@ -5,7 +5,6 @@ module.exports = {
     findBy,
     findById,
     findByUserId,
-    findByBookChapter,
     add,
     update,
     remove

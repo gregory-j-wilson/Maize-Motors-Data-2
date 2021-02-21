@@ -47,7 +47,7 @@ router.get('/:id', restricted, (req, res) => {
 
   const { id } = req.params
   
-  Commentary.findById(id)
+  Posts.findById(id)
       .then(post => {
           res.status(200).json(post)
       })

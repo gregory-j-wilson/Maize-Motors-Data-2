@@ -59,7 +59,7 @@ router.get('/:post_id', restricted, (req, res) => {
 
   const { post_id } = req.params
 
-  CommentsOnPosts.findByBookChapter(post_id)
+  CommentsOnPosts.findByPostId(post_id)
       .then(comment_on_post => {
         res.status(200).json(comment_on_post)
       })
