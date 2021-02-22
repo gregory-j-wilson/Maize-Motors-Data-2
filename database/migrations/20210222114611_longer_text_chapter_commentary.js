@@ -1,7 +1,7 @@
 
 exports.up = function(knex) {
 
-    return knex.schema.alterTable('user', function(t) {
+    return knex.schema.alterTable('commentary', function(t) {
         t.text('commentary', 'longtext').notNullable().alter();
       });
   
