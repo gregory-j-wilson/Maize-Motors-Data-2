@@ -9,5 +9,8 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
 
- 
+    return knex.schema.alterTable('commentary', function(t) {
+        t.string('commentary').notNullable().alter();
+      });
+
 };
