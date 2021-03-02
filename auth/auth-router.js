@@ -107,6 +107,17 @@ router.get('/:id/commentary', restricted, (req, res) => {
 
 })
 
+router.put('/:id', restricted, (req, res) => {
+  const { id } = req.params;
+  const changes = req.body;
+
+      Users.update(changes, id)
+      .then(number => {
+        res.json({message: `${number} user(s) updated.`});
+      });
+   
+});
+
 //-----------------------------------------
 
 function makeJwt(user) {
