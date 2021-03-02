@@ -31,7 +31,7 @@ async function add(user) {
 }
 
 function update(changes, id) {
-    return db('users').where({id}).update(changes)
+    return db('users').where({id}).update(changes).then(() => findById(id)).catch(err => console.log(err))
 }
 
 function remove(id) {

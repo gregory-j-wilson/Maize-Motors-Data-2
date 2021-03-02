@@ -112,9 +112,10 @@ router.put('/:id', restricted, (req, res) => {
   const changes = req.body;
 
       Users.update(changes, id)
-      .then(number => {
-        res.json({message: `${number} user(s) updated.`});
-      });
+      .then(changes => {
+        res.status(200).json(changes)
+      })
+      .catch(err => res.status(500).json({ error: err }))
    
 });
 
