@@ -73,10 +73,10 @@ router.put('/:id', restricted, (req, res) => {
 
   CommentsOnPosts.update(changes, id)
         .then(number => {
-          res.json({message: `${number} user(s) updated.`})
+          res.json({message: `${number} comment updated.`})
         })
         .catch(err => {
-          res.status(500).json({ message: 'Failed to update user' })
+          res.status(500).json({ message: 'Failed to update comment' })
         })
 
 })
