@@ -10,7 +10,7 @@ const corsOptions = {
 router.use(cors(corsOptions));
   
   
-const Commentary = require("./commentary-model");
+const Cars = require("./cars-model");
   
 const restricted = require("../../auth/authenticate-middleware")
 
@@ -19,11 +19,11 @@ const restricted = require("../../auth/authenticate-middleware")
 
 router.post('/', (req, res) => {
   
-    const info = req.body
+    const car = req.body
   
-    Commentary.add(info)
-        .then(commentary => {
-        res.status(201).json({data: commentary})
+    Cars.add(car)
+        .then(car => {
+        res.status(201).json({data: car})
         })
         .catch(error => {
         res.status(500).json({error: error.message})
@@ -35,9 +35,9 @@ router.post('/', (req, res) => {
 
 router.get('/', restricted, (req, res) => {
 
-  Commentary.find()
-      .then(commentaries => {
-          res.status(200).json(commentaries)
+  Cars.find()
+      .then(cars => {
+          res.status(200).json(cars)
       })
 
 })
@@ -47,31 +47,22 @@ router.get('/:id', restricted, (req, res) => {
 
   const { id } = req.params
   
-  Commentary.findById(id)
-      .then(chapterCommentary => {
-          res.status(200).json(chapterCommentary)
+  Cars.findById(id)
+      .then(car => {
+          res.status(200).json(car)
       })
 
 })
 
 
-router.get('/:book/:chapter', restricted, (req, res) => {
 
-  const { book, chapter } = req.params
-
-  Commentary.findByBookChapter(book, chapter)
-      .then(chapterCommentary => {
-        res.status(200).json(chapterCommentary)
-      })
-
-})
 
 router.put('/:id', restricted, (req, res) => {
 
   const { id } = req.params;
   const changes = req.body;
 
-  Commentary.update(changes, id)
+  Cars.update(changes, id)
         .then(number => {
           res.json({message: `${number} user(s) updated.`})
         })
@@ -85,16 +76,16 @@ router.delete('/:id', restricted, (req, res) => {
 
   const {id} = req.params
 
-  Commentary.remove(id)
+  Cars.remove(id)
   .then(deleted => {
       if (deleted) {
-        res.status(200).json({ message: 'Commentary deleted!' });
+        res.status(200).json({ message: 'Car deleted!' });
       } else {
-        res.status(404).json({ message: 'Could not find commentary with given id' });
+        res.status(404).json({ message: 'Could not find car with given id' });
       }
     })
     .catch(err => {
-      res.status(500).json({ message: `Failed to delete commentary because ${err.message}.` });
+      res.status(500).json({ message: `Failed to delete car because ${err.message}.` });
     });
 
 })
