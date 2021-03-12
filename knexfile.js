@@ -12,11 +12,11 @@ module.exports = {
     client: 'pg',
     useNullAsDefault: true,
     connection: {
-      host: "ec2-52-44-46-66.compute-1.amazonaws.com",
+      host: "ec2-18-214-208-89.compute-1.amazonaws.com",
       port: 5432,
-      user: "svyllxwlkngwhk",
-      password: "48064fcca22c1a5ccb26ce6430351e5618a12f1edb49663eedde5807ce83be1e",
-      database: "d245s3eoecht9v",
+      user: "dybviwxhczerlh",
+      password: "66cdd0ed389348667709edd2ddc50dc1fdada7c32da4655c093dedfe156e5cb7",
+      database: "d6b19ubq85o71",
       ssl: {rejectUnauthorized: false},
      },
     migrations: {
@@ -53,11 +53,11 @@ module.exports = {
     client: 'pg',
     useNullAsDefault: true,
     connection: {
-      host: "ec2-52-44-46-66.compute-1.amazonaws.com",
+      host: "ec2-18-214-208-89.compute-1.amazonaws.com",
       port: 5432,
-      user: "svyllxwlkngwhk",
-      password: "48064fcca22c1a5ccb26ce6430351e5618a12f1edb49663eedde5807ce83be1e",
-      database: "d245s3eoecht9v",
+      user: "dybviwxhczerlh",
+      password: "66cdd0ed389348667709edd2ddc50dc1fdada7c32da4655c093dedfe156e5cb7",
+      database: "d6b19ubq85o71",
       ssl: {rejectUnauthorized: false},
      },
     migrations: {
