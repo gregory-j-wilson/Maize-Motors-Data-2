@@ -23,7 +23,6 @@ exports.down = function(knex) {
 
     return knex.schema
         .dropTableIfExists('comments_on_posts')
-        .dropTableIfExists('posts')
-        
+        .dropTableIfExists('posts')    
   
 };
