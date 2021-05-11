@@ -1,2 +1,2 @@
-# Chaqar Data
-The backend for my Chaqar Bible App
+# Maize Motors Data
+The backend for Maize Motors website
