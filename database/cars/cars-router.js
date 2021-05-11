@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
 
 
 
-router.get('/', restricted, (req, res) => {
+router.get('/' (req, res) => {
 
   Cars.find()
       .then(cars => {
