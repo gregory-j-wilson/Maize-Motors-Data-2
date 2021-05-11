@@ -43,7 +43,7 @@ router.get('/', (req, res) => {
 })
 
 
-router.get('/:id', restricted, (req, res) => {
+router.get('/:id',  (req, res) => {
 
   const { id } = req.params
   
@@ -57,7 +57,7 @@ router.get('/:id', restricted, (req, res) => {
 
 
 
-router.put('/:id', restricted, (req, res) => {
+router.put('/:id', (req, res) => {
 
   const { id } = req.params;
   const changes = req.body;
@@ -72,7 +72,7 @@ router.put('/:id', restricted, (req, res) => {
 
 })
 
-router.delete('/:id', restricted, (req, res) => {
+router.delete('/:id', (req, res) => {
 
   const {id} = req.params
 
